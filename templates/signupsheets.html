@@ -1,0 +1,147 @@
+<html><head>
+<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='ComputerModernSans/cmun-sans.css')}}"/>
+<style media="screen, print">
+@page {
+	margin: 0.3in;
+}
+body {
+  font-family: "Computer Modern Sans", sans-serif;
+}
+h1 {
+	page-break-before: always;
+	border-bottom:0.5pt solid black;
+}
+p.small {
+  line-height: 95%;
+}
+.inputtable {
+	border:1px solid black;
+	width:100%;
+	border-radius:3px;
+	border-spacing:0;
+}
+.inputtable .field {
+	padding:4px;
+	font-size:20pt;
+	min-height:20pt;
+	border-right:1px solid black;
+}
+.inputtable .field.id {
+	padding-top:10px!important;
+}
+.inputtable .field > * {
+	line-height:normal;
+}
+.inputtable .field:last-child {
+	border-right:0;
+}
+.inputtable .description {
+	font-size:8pt;
+	background:#dddddd;
+	color:black;
+	padding:3px;
+	padding-bottom:1.5px;
+}
+.inputtable .field.center,.inputtable .description.center {
+	text-align:center;
+}
+.testcombinations {
+	border-spacing:0;
+	font-size:6pt;
+}
+</style>
+</head>
+<body>
+{% for id in id_seq %}
+<h1>
+{{event_name}} Registration
+</h1>
+<p class="small">
+Fill out this form carefully and record contestant names on the corresponding name tags enclosed.
+<b>Make sure ID numbers on this form match ID numbers provided to your team members.</b>
+Send <b>exactly one</b> representative with this form to check-in, with payment if not yet provided.
+</p>
+<table class="inputtable">
+<tr>
+<td class="field center id" width="80">
+{{id}}
+</td>
+<td class="field">
+
+</td>
+</tr>
+<tr>
+<td class="description center">
+team id
+</td>
+<td class="description">
+team name
+</td>
+</tr>
+</table>
+<br>
+<table class="inputtable">
+<tr>
+<td class="field">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td class="description">
+school / group name
+</td>
+</tr>
+</table>
+
+<h3>
+Contestants:
+</h3>
+{% for letter in letter_seq %}
+<table class="inputtable">
+<tr>
+<td class="field center id" width="80" rowspan=2>
+{{id+letter}}
+</td>
+<td class="field">
+&nbsp;
+</td>
+<td class="field" width=50>
+&nbsp;
+</td>
+<td class="field" width=210>
+<table class="testcombinations">
+<tr>
+<td>1 - Alg. &amp; Discrete&nbsp;</td>
+<td>5 - Discrete &amp; Geometry</td>
+</tr>
+<tr>
+<td>2 - Alg. &amp; Calculus</td>
+<td>6 - Calculus &amp; Geometry</td>
+</tr>
+<tr>
+<td>3 - Alg. &amp; Geometry</td>
+<td>7 - General</td>
+</tr>
+<tr>
+<td>4 - Discrete &amp; Calculus</td>
+<td></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="description">
+contestant name (make sure the id/name pair matches the name tag)
+</td>
+<td class="description" colspan=2>
+test combination (write the number)
+</td>
+</tr>
+</table>
+{% if letter is equalto last_letter %}
+<div style='font-size:10pt;'>&nbsp;</div>
+{% endif %}
+{% endfor %}
+{% endfor %}
+</body>
+</html>
