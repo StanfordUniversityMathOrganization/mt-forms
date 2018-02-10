@@ -7,8 +7,8 @@ app = Flask(__name__)
 def signupsheets():
     start = 1
     end = 99
-    team_size = 6
-    event_name = "Berkeley Math Tournament"
+    team_size = 8
+    event_name = "Stanford Math Tournament"
 
     id_len = int(math.floor(math.log10(end)+1))
     id_seq = [str(n).zfill(id_len) for n in range(start, end+1)]
